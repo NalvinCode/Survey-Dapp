@@ -9,12 +9,12 @@ import {
 } from "antd";
 import type { NotificationPlacement } from "antd/es/notification/interface";
 import { ReactNode, useState, useEffect } from "react";
-import { useFetchSurvey } from "../hooks/useFetchSurvey";
 import React from "react";
 import Web3 from "web3";
 import Contract from "web3-eth-contract";
 import { AbiItem } from "web3-utils";
 import tokenAbi from "../../public/tokenAbi.json";
+import axios from "axios";
 
 const { Countdown } = Statistic;
 
@@ -56,7 +56,8 @@ export default function Home() {
     checkConnection();
 
     const getSurvey = async () => {
-      const data = await useFetchSurvey();
+      const baseURL = "http://localhost:3000/database/survey.json";
+      const data = (await axios.get<any>(`${baseURL}`)).data;
       setSurvey(data);
     };
     getSurvey();
@@ -232,7 +233,7 @@ export default function Home() {
               <Card
                 title={`${answer.question}`}
                 style={{ width: 300 }}
-                key={survey.questions.indexOf(answer)}
+                key={answers.indexOf(answer)}
               >
                 <p>{answer.answer}</p>
               </Card>
