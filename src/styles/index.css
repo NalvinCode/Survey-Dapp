@@ -1,39 +1,48 @@
-body, html{
-    width: 100%;
-    overflow: hidden;
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Oswald&display=swap");
+
+body,
+html {
+  width: 100%;
+  overflow: hidden;
 }
 
-.app-container{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+* {
+  font-family: "Luckiest Guy", cursive;
+  font-family: "Oswald", sans-serif;
 }
 
-.alert-slide{
-    position: absolute;
-    width: 20%;
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.alert-slide {
+  position: absolute;
+  width: 20%;
+  right: -20%;
+  animation: slide;
+  animation-duration: 10s;
+  display: hidden;
+}
+
+@keyframes slide {
+  0% {
     right: -20%;
-    animation: slide;
-    animation-duration: 10s;
+    display: block;
+  }
+  10% {
+    right: 0%;
+  }
+  90% {
+    right: 0%;
+  }
+  100% {
+    right: -20%;
     display: hidden;
-}
-
-@keyframes slide{
-    0%{
-        right: -20%;
-        display: block;
-    }
-    10%{
-        right: 0%;
-    }
-    90%{
-        right: 0%;
-    }
-    100%{
-        right: -20%;
-        display: hidden;
-    }
+  }
 }
