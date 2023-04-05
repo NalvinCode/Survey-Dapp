@@ -56,7 +56,8 @@ export default function Home() {
     checkConnection();
 
     const getSurvey = async () => {
-      const baseURL = "http://localhost:3000/database/survey.json";
+      const baseURL =
+        (process.env.URL || "http://localhost:3000/") + "database/survey.json";
       const data = (await axios.get<any>(`${baseURL}`)).data;
       setSurvey(data);
     };
